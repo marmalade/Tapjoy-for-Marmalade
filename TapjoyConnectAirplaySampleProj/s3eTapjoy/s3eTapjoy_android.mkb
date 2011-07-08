@@ -1,0 +1,18 @@
+#!/usr/bin/env mkb
+# Builder mkb file for the s3eTapjoy extension on android
+
+platform LINUX
+
+buildtype(SCONS, ARM)
+
+define S3E_ANDROID
+
+options
+{
+    dll
+    output-name="lib/android/libs3eTapjoy.so"
+    output-name-debug="lib/android/libs3eTapjoy_d.so"
+}
+define S3E_BUILD_EXT
+
+subproject s3eTapjoy_build
