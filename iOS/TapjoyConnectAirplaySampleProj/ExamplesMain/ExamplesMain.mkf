@@ -1,0 +1,24 @@
+option strict
+
+files
+{
+	examples.defines.txt
+
+	(src)
+	ExamplesMain.cpp
+	ExamplesMain.h
+	Buttons.cpp
+	Logo.cpp
+	Logo.h
+}
+
+if {{ not defined EXAMPLE_OVERRIDE_MAIN }}
+{
+	files
+	{
+		(src)
+		main.cpp
+	}
+}
+
+includepath src

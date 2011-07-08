@@ -1,0 +1,32 @@
+options
+{
+	s3e-data-dir="data"
+}
+ 
+files
+{
+	(source)
+	TapjoyAirplaySampleProj.cpp
+	TapjoyAirplaySampleProjMain.cpp
+}
+ 
+subprojects
+{
+	s3eTapjoy
+	iwutil
+	ExamplesMain
+}
+
+assets
+{
+	(data)
+	logo.raw
+	splash.jpg
+}
+
+#### AUTO GENERATED deployment settings from DeployTool.exe. Do not edit below this line ####
+deployments
+{
+	["Default"]
+	iphone-appid='com.ideaworks3d.TapjoyAirplaySampleProj'
+}

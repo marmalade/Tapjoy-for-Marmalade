@@ -1,0 +1,124 @@
+# mkf file for building extension Tapjoy.
+# NOTE: This file was originally written by the extension builder, but will not
+# be overwritten (unless --force is specified) and is intended to be modified.
+display_name "Extensions/s3eTapjoy"
+
+includepath source/h
+includepath h
+
+defines
+{
+    #Define the verbose channel to be off by default (but controllable by icf)
+    IW_TRACE_CHANNEL_TAPJOY_VERBOSE=2
+
+    #This macro indicates that this extension is being built
+    S3E_EXT_TAPJOY
+}
+
+#This command re-generates the relevant source files from the s4e when
+#the mkb is run
+extension
+{
+    ("$AIRPLAY_ROOT/extensions/builder")
+    "make_extension s3eTapjoy.s4e"
+}
+
+#include the extension builder subproject
+subproject "$AIRPLAY_ROOT/s3e/edk"
+
+file s3eTapjoy.s4e
+
+
+if {{defined I3D_OS_IPHONE}}
+{
+	includepath
+	{
+		source/iphone/TapjoyConnect
+		source/iphone/TapjoyConnect/Components/TJCAds
+		source/iphone/TapjoyConnect/Components/TJCCore
+		source/iphone/TapjoyConnect/Components/TJCCore/Utilities
+		source/iphone/TapjoyConnect/Components/TJCCore/Views
+		source/iphone/TapjoyConnect/Components/TJCCore/WebFetcher
+		source/iphone/TapjoyConnect/Components/TJCFeaturedApp
+		source/iphone/TapjoyConnect/Components/TJCOffers
+		source/iphone/TapjoyConnect/Components/TJCUserAccount
+	}
+
+    files
+    {
+        ["source"]
+        (use_first_found, source/iphone, source/generic)
+        s3eTapjoy_platform.mm
+        #Add any iphone-specific files here
+		TapjoyConnect/TapjoyConnect.m
+		TapjoyConnect/Components/TJCAds/TJCAdRequestHandler.m
+		TapjoyConnect/Components/TJCAds/TJCAdView.m
+		TapjoyConnect/Components/TJCCore/Utilities/TBXML.m
+		TapjoyConnect/Components/TJCCore/Utilities/TJCHardwareUtil.m
+		TapjoyConnect/Components/TJCCore/Utilities/TJCLog.m
+		TapjoyConnect/Components/TJCCore/Utilities/TJCNetReachability.m
+		TapjoyConnect/Components/TJCCore/Utilities/TJCUtil.m
+		TapjoyConnect/Components/TJCCore/Views/TJCCallsWrapper.m
+		TapjoyConnect/Components/TJCCore/Views/TJCUINavigationBarView.m
+		TapjoyConnect/Components/TJCCore/Views/TJCUIWebPageView.m
+		TapjoyConnect/Components/TJCCore/Views/TJCViewCommons.m
+		TapjoyConnect/Components/TJCCore/WebFetcher/TJCCoreFetcher.m
+		TapjoyConnect/Components/TJCCore/WebFetcher/TJCCoreFetcherHandler.m
+		TapjoyConnect/Components/TJCFeaturedApp/TJCFeaturedAppDBManager.m
+		TapjoyConnect/Components/TJCFeaturedApp/TJCFeaturedAppManager.m
+		TapjoyConnect/Components/TJCFeaturedApp/TJCFeaturedAppModel.m
+		TapjoyConnect/Components/TJCFeaturedApp/TJCFeaturedAppRequestHandler.m
+		TapjoyConnect/Components/TJCFeaturedApp/TJCFeaturedAppView.m
+		TapjoyConnect/Components/TJCFeaturedApp/TJCFeaturedAppViewHandler.m
+		TapjoyConnect/Components/TJCOffers/TJCOffersViewHandler.m
+		TapjoyConnect/Components/TJCOffers/TJCOffersWebView.m
+		TapjoyConnect/Components/TJCUserAccount/TJCUserAccountManager.m
+		TapjoyConnect/Components/TJCUserAccount/TJCUserAccountModel.m
+		TapjoyConnect/Components/TJCUserAccount/TJCUserAccountRequestHandler.m
+    }
+}
+
+if {{defined I3D_OS_WINDOWS}}
+{
+    files
+    {
+        ["source"]
+        (use_first_found, source/windows, source/generic)
+        s3eTapjoy_platform.cpp
+        #Add any windows-specific files here
+    }
+}
+
+if {{defined S3E_ANDROID}}
+{
+    files
+    {
+        ["source"]
+        (use_first_found, source/android, source/generic)
+        s3eTapjoy_platform.cpp
+        #Add any android-specific files here
+    }
+}
+
+files
+{
+
+    # Add any platform-independent files here
+    # Note that if the file exists in the platform-specific directory
+    # it will be taken from there instead of 'generic'
+    s3eTapjoy_register.cpp
+    s3eTapjoy.cpp
+
+    ["h"]
+    (source/h)
+    s3eTapjoy_internal.h
+    s3eTapjoy_autodefs.h
+
+    ["docs"]
+    (interface)
+    s3eTapjoy.defines.txt
+
+    []
+    (.)
+    s3eTapjoy.s4e
+}

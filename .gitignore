@@ -1,3 +1,7 @@
 #build_tapjoy_android_java
 #build_tapjoy_android_linux_scons_arm
 #lib
+
+.DS_Store
+
+.gitignore
