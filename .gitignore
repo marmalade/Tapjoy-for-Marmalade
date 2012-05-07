@@ -5,3 +5,13 @@
 .DS_Store
 
 .gitignore
+
+*.bak
+build_tapjoymarmaladesampleproject_xcode
+build_examplesmain_xcode
+build_s3etapjoy_android_java
+build_s3etapjoy_android_linux_scons_arm
+stamp
+libs3eTapjoy_d.map
+libs3eTapjoy_d.so
+libs3eTapjoy.map
