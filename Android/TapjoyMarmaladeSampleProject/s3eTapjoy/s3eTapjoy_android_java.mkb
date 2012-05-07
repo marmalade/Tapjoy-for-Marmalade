@@ -1,0 +1,44 @@
+#!/usr/bin/env mkb
+# Builder mkb file for the java portion of the s3eTapjoy extension on android
+platform JAVA
+
+files
+{
+    (source/android)
+    
+    com/tapjoy/TapjoyAwardPointsNotifier.java
+    com/tapjoy/TapjoyConnect.java
+    com/tapjoy/TapjoyConnectCore.java
+    com/tapjoy/TapjoyConstants.java
+    com/tapjoy/TapjoyDisplayAd.java
+    com/tapjoy/TapjoyDisplayAdNotifier.java
+    com/tapjoy/TapjoyDisplayAdSize.java
+    com/tapjoy/TapjoyFeaturedApp.java
+    com/tapjoy/TapjoyFeaturedAppNotifier.java
+    com/tapjoy/TapjoyFeaturedAppObject.java
+    com/tapjoy/TapjoyFeaturedAppWebView.java
+    com/tapjoy/TapjoyLog.java
+    com/tapjoy/TapjoyNotifier.java
+    com/tapjoy/TapjoySpendPointsNotifier.java
+    com/tapjoy/TapjoyURLConnection.java
+    com/tapjoy/TapjoyUtil.java
+    com/tapjoy/TJCOffers.java
+    com/tapjoy/TJCOffersWebView.java
+
+	com/tapjoy/TapjoyDisplayMetricsUtil.java
+	com/tapjoy/TapjoyEarnedPointsNotifier.java
+	com/tapjoy/TapjoyHardwareUtil.java
+	com/tapjoy/TapjoyHttpURLResponse.java
+	com/tapjoy/TapjoyVideo.java
+	com/tapjoy/TapjoyVideoNotifier.java
+	com/tapjoy/TapjoyVideoObject.java
+	com/tapjoy/TapjoyVideoStatus.java
+	com/tapjoy/TapjoyVideoView.java
+    
+    s3eTapjoy.java
+}
+
+librarypath "$AIRPLAY_ROOT/s3e/deploy/plugins/android/android.jar"
+librarypath "$AIRPLAY_ROOT/s3e/loader/android/s3e_release.jar"
+
+option output-name=lib/android/s3eTapjoy.jar
